@@ -18,7 +18,7 @@
             overflow: hidden; color: var(--brown-text);
         }
         body::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.35); z-index: 1; }
-        .container { position: relative; z-index: 10; width: 95%; max-width: 500px; height: 95vh; display: flex; justify-content: center; align-items: center; }
+        .container { position: relative; z-index: 10; width: 95%; max-width: 450px; height: 95vh; display: flex; justify-content: center; align-items: center; }
 
         /* --- TIUP LILIN --- */
         #tiup-lilin { text-align: center; color: white; cursor: pointer; }
@@ -30,7 +30,7 @@
         #main-menu { display: none; text-align: center; width: 100%; animation: fadeIn 1s; }
         .btn-love { background: #ff69b4; color: white; border: none; padding: 15px 35px; margin: 10px; border-radius: 50px; cursor: pointer; font-size: 1.1em; font-weight: bold; box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: 0.3s; width: 80%; }
 
-        /* --- CARD SETTINGS (Tampilan HP) --- */
+        /* --- CARD SETTINGS --- */
         .content-card { 
             display: none; width: 100%; height: 100%; 
             background: url('bg_surat.jpg') no-repeat center center; background-size: cover;
@@ -41,29 +41,40 @@
         .content-card::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--bg-glass); z-index: -1; border-radius: 12px; }
         .content-card.active { display: flex; }
 
-        .diary-slide { display: none; width: 100%; flex-direction: column; gap: 20px; align-items: center; animation: fadeIn 0.7s; }
+        .diary-slide { display: none; width: 100%; flex-direction: column; gap: 15px; align-items: center; animation: fadeIn 0.7s; }
         .diary-slide.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* FOTO DI ATAS */
-        .scrapbook-top { width: 100%; height: 250px; position: relative; display: flex; align-items: center; justify-content: center; }
+        /* AREA FOTO */
+        .scrapbook-top { width: 100%; min-height: 220px; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
         
-        /* TEKS DI BAWAH */
+        /* AREA TEKS */
         .scrapbook-bottom { 
-            width: 100%; padding: 20px; background: white; border-radius: 15px; 
+            width: 100%; padding: 18px; background: white; border-radius: 15px; 
             border: 2px dashed #ffb6c1; line-height: 1.6; font-size: 0.95em; 
             box-shadow: inset 0 0 10px rgba(0,0,0,0.05); box-sizing: border-box;
+            z-index: 20; position: relative;
         }
 
         .item-frame { position: absolute; background: white; padding: 5px 5px 20px 5px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); border: 1px solid #ddd; }
         .item-frame img { width: 100%; height: 100%; object-fit: cover; }
         .item-frame::before { content: ""; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 50px; height: 15px; background: var(--pink-tape); z-index: 10; }
         
-        .potrait { width: 120px; height: 160px; }
-        .landscape { width: 160px; height: 120px; }
-        .final-frame { width: 220px; height: auto; position: relative !important; transform: none !important; }
+        .potrait { width: 110px; height: 150px; }
+        .landscape { width: 150px; height: 110px; }
+        
+        /* PERBAIKAN KHUSUS FOTO TERAKHIR */
+        .final-frame { 
+            width: 180px !important; 
+            height: auto !important; 
+            position: relative !important; 
+            transform: none !important; 
+            margin: 0 auto !important;
+            padding-bottom: 25px !important;
+        }
 
         .btn-nav { background: #5d4037; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; margin-top: 15px; font-weight: bold; width: 100%; }
+        .btn-half { width: 48%; margin: 1%; }
         .from-tag { display: block; text-align: right; color: #ff69b4; font-weight: bold; margin-top: 15px; font-style: italic; }
     </style>
 </head>
@@ -94,7 +105,6 @@
                 <div class="scrapbook-bottom">
                     <p><b>Happy Birthday Aegi Gom kesayanganku! 🐻💗</b></p>
                     <p>Dari awal kenal sampai sekarang, setiap momen sama kamu itu berharga banget. Mungkin kata-kata ngga akan pernah cukup buat ngejelasin betapa berarti kamu di hidup aku.</p>
-                    <p>Aku gatau harus mulai dari mana, setiap aku mau nulis ini kek aku tiba-tiba ngebalank mau nulis apa. Rasanya semua kata pada berebut keluar, but it's okey. Aku coba tulis pelan-pelan yaa...</p>
                     <button class="btn-nav" onclick="nextSlide('s2')">Lanjut ➔</button>
                 </div>
             </div>
@@ -106,9 +116,8 @@
                 </div>
                 <div class="scrapbook-bottom">
                     <p>Selamat jadi versi kamu yang lebih, lebih baik, lebih dewasa tapi tetap lembut dan humoris seperti biasanya. Panjang umur dalam kebahagian dan cinta yang kamu pantas dapatkan.</p>
-                    <p>A wish for you on your birthday, apapun yang kamu impikan semoga segera terwujud, apapun yang kamu doakan semoga Allah kabulkan pelan-pelan di waktu yang tepat.</p>
-                    <button class="btn-nav" onclick="nextSlide('s1')">Kembali</button>
-                    <button class="btn-nav" onclick="nextSlide('s3')">Lanjut ➔</button>
+                    <button class="btn-nav" onclick="nextSlide('s1')" class="btn-half">Kembali</button>
+                    <button class="btn-nav" onclick="nextSlide('s3')" class="btn-half">Lanjut ➔</button>
                 </div>
             </div>
 
@@ -118,7 +127,7 @@
                     <div class="item-frame potrait" style="right: 10%; transform: rotate(8deg);"><img src="foto7.jpg"></div>
                 </div>
                 <div class="scrapbook-bottom">
-                    <p>Tapi di hari spesial kamu ini, aku cuma mau kamu selalu inget satu hal: Kamu itu pantas dicintai, didengerin, diperhatiin, dan dirayakan bahkan dalam hal-hal terkecil sekalipun. Kamu itu berharga, bukan cuma untuk orang lain, tapi yang paling utama untuk diri kamu sendiri.</p>
+                    <p>Aku cuma mau kamu selalu inget satu hal: Kamu itu pantas dicintai, didengerin, diperhatiin, dan dirayakan bahkan dalam hal-hal terkecil sekalipun. Kamu itu berharga bagi dirimu sendiri.</p>
                     <button class="btn-nav" onclick="nextSlide('s2')">Kembali</button>
                     <button class="btn-nav" onclick="nextSlide('s4')">Lanjut ➔</button>
                 </div>
@@ -130,7 +139,7 @@
                     <div class="item-frame landscape" style="left: 10%; transform: rotate(4deg);"><img src="foto9.jpg"></div>
                 </div>
                 <div class="scrapbook-bottom">
-                    <p>Aku mau minta maaf kalau selama ini mungkin masih ada sikapku yang buat kamu kecewa atau salah paham. Jujur, aku sudah lama banget menutup hati, dan kamu adalah satu-satunya orang yang bikin aku berani buat membukanya lagi sekarang.</p>
+                    <p>Aku mau minta maaf kalau selama ini mungkin masih ada sikapku yang buat kamu kecewa. Kamu adalah satu-satunya orang yang bikin aku berani buat membuka hati lagi sekarang.</p>
                     <button class="btn-nav" onclick="nextSlide('s3')">Kembali</button>
                     <button class="btn-nav" onclick="nextSlide('s5')">Lanjut ➔</button>
                 </div>
@@ -142,7 +151,7 @@
                     <div class="item-frame potrait" style="right: 5%; transform: rotate(5deg);"><img src="foto11.jpg"></div>
                 </div>
                 <div class="scrapbook-bottom">
-                    <p>Aku pengen hubungan kita makin kuat tanpa ada rasa curiga yang bikin kita jauh. Aku belajar buat percaya sepenuhnya, dan aku harap kamu juga bisa kasih aku ruang buat jadi tempat kamu cerita apa pun—tanpa ragu dan tanpa rasa takut lagi.</p>
+                    <p>Aku pengen hubungan kita makin kuat tanpa ada rasa curiga. Aku belajar buat percaya sepenuhnya, dan aku harap kamu juga bisa jadi tempat aku cerita tanpa rasa takut lagi.</p>
                     <button class="btn-nav" onclick="nextSlide('s4')">Kembali</button>
                     <button class="btn-nav" onclick="nextSlide('s6')">Lanjut ➔</button>
                 </div>
@@ -154,22 +163,24 @@
                     <div class="item-frame potrait" style="left: 10%; transform: rotate(10deg);"><img src="foto14.jpg"></div>
                 </div>
                 <div class="scrapbook-bottom">
-                    <p>Kalau nanti kamu capek atau ngerasa dunia tidak adil, please remember this: <b>"YOU DESERVE BETTER"</b>. Kamu layak dapat cinta yang lembut, perhatian yang tulus dan kebahagian yang ngga bikin kamu sendirian.</p>
+                    <p>Please remember: <b>"YOU DESERVE BETTER"</b>. Kamu layak dapat cinta yang lembut, perhatian yang tulus dan kebahagian yang ngga bikin kamu merasa sendirian.</p>
                     <button class="btn-nav" onclick="nextSlide('s5')">Kembali</button>
                     <button class="btn-nav" onclick="nextSlide('s7')">Halaman Akhir ➔</button>
                 </div>
             </div>
 
             <div id="s7" class="diary-slide">
-                <div class="scrapbook-top">
+                <div class="scrapbook-top" style="min-height: 200px;">
                     <div class="item-frame final-frame"><img src="foto4.jpg"></div>
                 </div>
                 <div class="scrapbook-bottom">
                     <p>Terima kasih sudah sabar sama aku. Makasih udah izinin aku masuk ke dunia kamu.</p>
-                    <h3 style="color:#ff69b4; margin:10px 0;">I LOVE YOU MY AEGI GOM! 🐻💋💗</h3>
+                    <h3 style="color:#ff69b4; margin:5px 0; font-size: 1.2em;">I LOVE YOU MY AEGI GOM! 🐻💋💗</h3>
                     <span class="from-tag">From Princes Jeon🌸</span>
-                    <button class="btn-nav" onclick="nextSlide('s6')" style="background:#8d6e63;">Kembali</button>
-                    <button class="btn-nav" onclick="closeLetter()">Selesai</button>
+                    <div style="display:flex; justify-content: space-between; gap: 5px;">
+                        <button class="btn-nav" onclick="nextSlide('s6')" style="background:#8d6e63; width: 45%;">Kembali</button>
+                        <button class="btn-nav" onclick="closeLetter()" style="width: 45%;">Selesai</button>
+                    </div>
                 </div>
             </div>
         </div>
